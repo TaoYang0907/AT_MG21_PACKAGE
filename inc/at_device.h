@@ -30,15 +30,6 @@ extern "C" {
 #endif
 
 #include <at.h>
-//#include <at_socket.h>
-
-#if !defined(RT_USING_NETDEV) || (!defined(AT_SW_VERSION_NUM) || AT_SW_VERSION_NUM < 0x10300)
-#error "This RT-Thread version is older, please check and updata laster RT-Thread!"
-#else
-
-#include <arpa/inet.h>
-#include <netdev.h>
-#endif /* RT_USING_NETDEV */
 
 #define AT_DEVICE_SW_VERSION           "2.0.3"
 #define AT_DEVICE_SW_VERSION_NUM       0x20003
