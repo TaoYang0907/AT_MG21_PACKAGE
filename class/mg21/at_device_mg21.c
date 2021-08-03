@@ -136,7 +136,7 @@ static int mg21_pj(struct at_device *device, void *arg)
     }
     else
     {
-        sprintf(cmd, "AT+PJ:%02x", ((PJReq_t *)arg)->sec);
+        sprintf(cmd, "AT+PJ:%02x,%04x", ((PJReq_t *)arg)->sec, ((PJReq_t *)arg)->nodeId);
         if (at_obj_exec_cmd(device -> client, resp, (const char *)cmd) != RT_EOK)
         {
             rt_kprintf("AT client send commands failed, response error or timeout !\r\n");
