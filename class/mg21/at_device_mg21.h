@@ -16,7 +16,7 @@ extern "C" {
 
 #include <stdlib.h>
 
-#include <at_device.h>
+#include <mg21_device.h>
 
 struct at_device_mg21
 {
