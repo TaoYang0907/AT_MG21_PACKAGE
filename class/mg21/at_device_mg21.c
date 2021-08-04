@@ -46,16 +46,16 @@ static int mg21_info(struct at_device *device)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send commands to AT Server success!\r\n");
 
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     return RT_EOK;
@@ -87,16 +87,16 @@ static int mg21_reset(struct at_device *device)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send commands to AT Server success!\r\n");
 
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     return RT_EOK;
@@ -146,16 +146,16 @@ static int mg21_pj(struct at_device *device, void *arg)
         }
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -163,7 +163,7 @@ static int mg21_pj(struct at_device *device, void *arg)
     return RT_EOK;
 }
 
-static int mg21_setRadioCh(struct at_device *device, void *arg)
+static int mg21_set_radio_ch(struct at_device *device, void *arg)
 {
     at_response_t resp = RT_NULL;
 
@@ -203,16 +203,16 @@ static int mg21_setRadioCh(struct at_device *device, void *arg)
         }
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -220,7 +220,7 @@ static int mg21_setRadioCh(struct at_device *device, void *arg)
     return RT_EOK;
 }
 
-static int mg21_actEpDesc(struct at_device *device, void *arg)
+static int mg21_act_ep_desc(struct at_device *device, void *arg)
 {
     at_response_t resp = RT_NULL;
 
@@ -250,17 +250,17 @@ static int mg21_actEpDesc(struct at_device *device, void *arg)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
     rt_thread_delay(500);
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -268,7 +268,7 @@ static int mg21_actEpDesc(struct at_device *device, void *arg)
     return RT_EOK;
 }
 
-static int mg21_simpleDesc(struct at_device *device, void *arg)
+static int mg21_simple_desc(struct at_device *device, void *arg)
 {
     at_response_t resp = RT_NULL;
 
@@ -298,17 +298,17 @@ static int mg21_simpleDesc(struct at_device *device, void *arg)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
     rt_thread_delay(500);
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -316,7 +316,7 @@ static int mg21_simpleDesc(struct at_device *device, void *arg)
     return RT_EOK;
 }
 
-static int mg21_writeAttr(struct at_device *device, void *arg)
+static int mg21_write_attr(struct at_device *device, void *arg)
 {
     at_response_t resp = RT_NULL;
 
@@ -348,17 +348,17 @@ static int mg21_writeAttr(struct at_device *device, void *arg)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
     rt_thread_delay(500);
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -366,7 +366,7 @@ static int mg21_writeAttr(struct at_device *device, void *arg)
     return RT_EOK;
 }
 
-static int mg21_readAttr(struct at_device *device, void *arg)
+static int mg21_read_attr(struct at_device *device, void *arg)
 {
     at_response_t resp = RT_NULL;
 
@@ -397,17 +397,17 @@ static int mg21_readAttr(struct at_device *device, void *arg)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
     rt_thread_delay(500);
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -415,7 +415,7 @@ static int mg21_readAttr(struct at_device *device, void *arg)
     return RT_EOK;
 }
 
-static int mg21_onOff(struct at_device *device, void *arg)
+static int mg21_onoff(struct at_device *device, void *arg)
 {
     at_response_t resp = RT_NULL;
 
@@ -446,17 +446,17 @@ static int mg21_onOff(struct at_device *device, void *arg)
         return -RT_ERROR;
     }
 
-    /* 命令发送成功 */
+    /* Command sent successfully */
     rt_kprintf("AT Client send %s to AT Server success!\r\n", cmd);
 
     rt_thread_delay(500);
-    /* 处理响应结构体 */
+    /* Processing response structure */
     for(int i = 1; i <= resp ->line_counts; i++)
     {
         rt_kprintf("%s\r\n", at_resp_get_line(resp, i));
     }
 
-    /* 删除响应结构体 */
+    /* Delete response structure */
     at_delete_resp(resp);
 
     rt_free(cmd);
@@ -587,22 +587,22 @@ static int mg21_control(struct at_device *device, int cmd, void *arg)
         mg21_pj(device, arg);
         break;
     case AT_DEVICE_CTRL_SETRADIOCH:
-        mg21_setRadioCh(device, arg);
+        mg21_set_radio_ch(device, arg);
         break;
     case AT_DEVICE_CTRL_ACTEPDESC:
-        mg21_actEpDesc(device, arg);
+        mg21_act_ep_desc(device, arg);
         break;
     case AT_DEVICE_CTRL_SIMPLEDESC:
-        mg21_simpleDesc(device, arg);
+        mg21_simple_desc(device, arg);
         break;
     case AT_DEVICE_CTRL_WRITEATTR:
-        mg21_writeAttr(device, arg);
+        mg21_write_attr(device, arg);
         break;
     case AT_DEVICE_CTRL_READATTR:
-        mg21_readAttr(device, arg);
+        mg21_read_attr(device, arg);
         break;
     case AT_DEVICE_CTRL_ONOFF:
-        mg21_onOff(device, arg);
+        mg21_onoff(device, arg);
         break;
 
     case AT_DEVICE_CTRL_GET_GPS:

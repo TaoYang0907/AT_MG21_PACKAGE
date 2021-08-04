@@ -1,5 +1,5 @@
 /*
- * File      : at_sample_esp8266.c
+ * File      : at_sample_mg21.c
  * This file is part of RT-Thread RTOS
  * COPYRIGHT (C) 2006 - 2018, RT-Thread Development Team
  *
@@ -19,7 +19,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2019-05-10     chenyong     first version
+ * 2021-08-03     yangtao     first version
  */
 
 #include <rtthread.h>
@@ -53,7 +53,7 @@ INIT_APP_EXPORT(mg21_device_register);
 
 int zb_pj(int argc, char**argv)
 {
-    PJReq_t *pjCmd = rt_malloc(sizeof(PJReq_t));
+    pj_req_t *pjCmd = rt_malloc(sizeof(pj_req_t));
 
     pjCmd -> sec = 0x3C;
     pjCmd -> nodeId = 0xFFFF;
@@ -73,13 +73,13 @@ int zb_pj(int argc, char**argv)
     return RT_EOK;
 }
 
-/* 输出开放网络函数到 msh 中 */
+/* Export open network function to msh  */
 MSH_CMD_EXPORT(zb_pj, Coordinator Open Network);
 
 int zb_on(int argc, char**argv)
 {
-    zclOnoffCmd_t *onCmd = rt_malloc(sizeof(zclOnoffCmd_t));
-    //假设协调器下接有一网络短地址为0xABCD，使用端口号为0x0A的开关设备
+    zcl_onoff_cmd_t *onCmd = rt_malloc(sizeof(zcl_onoff_cmd_t));
+    //Suppose there is a switch device with network short address 0xABCD and port number 0x0A connected to the coordinator  
     onCmd -> nwkAddr = 0xABCD;
     onCmd -> endpoint = 0x0A;
     onCmd -> mode = 1;
@@ -100,13 +100,13 @@ int zb_on(int argc, char**argv)
     return RT_EOK;
 }
 
-/* 输出控制onoff设备函数到 msh 中 */
+/* Export onoff function to msh */
 MSH_CMD_EXPORT(zb_on, Control devices with onoff attribute);
 
 int zb_off(int argc, char**argv)
 {
-    zclOnoffCmd_t *offCmd = rt_malloc(sizeof(zclOnoffCmd_t));
-    //假设协调器下接有一网络短地址为0xABCD，使用端口号为0x0A的开关设备
+    zcl_onoff_cmd_t *offCmd = rt_malloc(sizeof(zcl_onoff_cmd_t));
+    //Suppose there is a switch device with network short address 0xABCD and port number 0x0A connected to the coordinator 
     offCmd -> nwkAddr = 0xABCD;
     offCmd -> endpoint = 0x0A;
     offCmd -> mode = 1;
@@ -127,13 +127,13 @@ int zb_off(int argc, char**argv)
     return RT_EOK;
 }
 
-/* 输出控制onoff设备函数到 msh 中 */
+/* Export onoff function to msh */
 MSH_CMD_EXPORT(zb_off, Control devices with onoff attribute);
 
 int zb_readAttr(int argc, char**argv)
 {
-    ReadAttrsReq_t *readAttrCmd = rt_malloc(sizeof(ReadAttrsReq_t));
-    //假设协调器下接有一网络短地址为0xABCD，使用端口号为0x0A的开关设备
+    read_attrs_req_t *readAttrCmd = rt_malloc(sizeof(read_attrs_req_t));
+    //Suppose there is a switch device with network short address 0xABCD and port number 0x0A connected to the coordinator 
     readAttrCmd -> nwkAddr = 0xABCD;
     readAttrCmd -> endpoint = 0x0A;
     readAttrCmd -> clusterID = 0x0006;
@@ -155,5 +155,5 @@ int zb_readAttr(int argc, char**argv)
     return RT_EOK;
 }
 
-/* 输出读设备属性函数到 msh 中 */
+/* Export read device attribute function to msh */
 MSH_CMD_EXPORT(zb_readAttr, Read attribute from the device);

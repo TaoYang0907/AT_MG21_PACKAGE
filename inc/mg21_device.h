@@ -84,20 +84,20 @@ typedef struct
 {
   uint8_t      sec;          // the length of time in seconds
   uint16_t     nodeId;       // Network address of interest
-} PJReq_t;
+} pj_req_t;
 
 // Set Radio Channel Command format
 typedef struct
 {
   uint         channel;      // Channel number to be set
-} ChannelReq_t;
+} channel_req_t;
 
 // Request Node’s Active Endpoint Command format
 typedef struct
 {
   uint64_t     address;      // Channel number to be set
   uint16_t     nodeId;       // Network address of interest
-} ActiveEpReq_t;
+} active_ep_Req_t;
 
 // Request Endpoint’s Simple Descriptor Command format
 typedef struct
@@ -105,7 +105,7 @@ typedef struct
   uint64_t     address;      // Channel number to be set
   uint16_t     nodeId;       // Network address of interest
   uint8_t      endpoint;     // the endpoint to be requested
-} SimpleDescReq_t;
+} simple_desc_req_t;
 
 // Write Attribute Request Command format
 typedef struct
@@ -119,7 +119,7 @@ typedef struct
   uint8_t      dataType;     // 8-bit hexadecimal number that represents the type of the data accepted by this Attribute
   char         *data;        // this structure is allocated, so the data is HERE
                              // - the size depends on the attribute data type
-} WriteAttrsReq_t;
+} write_attrs_req_t;
 
 // Read Attribute Request Command format
 typedef struct
@@ -129,7 +129,7 @@ typedef struct
   uint         sendMode;     // 0 – unicast, 1 - group addressing
   uint16_t     clusterID;    // Cluster ID
   uint16_t     attrID;       // Attribute ID
-} ReadAttrsReq_t;
+} read_attrs_req_t;
 
 // ZCL OnOff Control format
 typedef struct
@@ -137,7 +137,7 @@ typedef struct
   uint16_t     nwkAddr;      // Network address of interest
   uint8_t      endpoint;
   uint8_t      mode;
-} zclOnoffCmd_t;
+} zcl_onoff_cmd_t;
 
 /* AT device wifi ssid and password information */
 struct at_device_ssid_pwd
