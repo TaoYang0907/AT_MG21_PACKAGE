@@ -16,7 +16,7 @@
 
 #include <at_log.h>
 
-#ifdef PKG_USING_AT_MG21
+#ifdef PKG_USING_ZB_COORDINATOR
 
 /* =============================  mg21 operations ============================= */
 
