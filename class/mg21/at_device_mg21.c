@@ -477,14 +477,9 @@ static int mg21_onoff(struct at_device *device, void *arg)
     } while(0)                                                             \
 
 
-static void urc_busy_p_func(struct at_client *client, const char *data, rt_size_t size)
+static void urc_print_func(struct at_client *client, const char *data, rt_size_t size)
 {
     rt_kprintf("%s", data);
-}
-
-static void urc_ffd_func(struct at_client *client, const char *data, rt_size_t size)
-{
-    LOG_I("ffd data is %s", data);
 }
 
 static void urc_func(struct at_client *client, const char *data, rt_size_t size)
@@ -509,32 +504,28 @@ static void urc_func(struct at_client *client, const char *data, rt_size_t size)
     else if (rt_strstr(data, "RECENE"))
     {
         LOG_I("this is a scene report");
+		rt_kprintf("%s", data);
     }
-}
-
-static void urc_act_func(struct at_client *client, const char *data, rt_size_t size)
-{
-    LOG_I("data is %s", data);
 }
 
 static const struct at_urc urc_table[] =
 {
     {"REPORT",           "\r\n",           urc_func},
     {"RECENE",           "\r\n",           urc_func},
-    {"RPTATTR",          "\r\n",           urc_busy_p_func},
-    {"FFD",              "\r\n",           urc_ffd_func},
-    {"END",              "\r\n",           urc_busy_p_func},
-    {"ActEpDesc",        "\r\n",           urc_act_func},
-    {"SimpleDesc",       "\r\n",           urc_busy_p_func},
-    {"EP",               "\r\n",           urc_busy_p_func},
-    {"ProfileID",        "\r\n",           urc_busy_p_func},
-    {"DeviceID",         "\r\n",           urc_busy_p_func},
-    {"InCluster",        "\r\n",           urc_busy_p_func},
-    {"OutCluster",       "\r\n",           urc_busy_p_func},
-    {"----",             "\r\n",           urc_busy_p_func},
-    {"ReadAttr",         "\r\n",           urc_busy_p_func},
-    {"WriteAttr",        "\r\n",           urc_busy_p_func},
-    {"ERROR",            "\r\n",           urc_busy_p_func},
+    {"RPTATTR",          "\r\n",           urc_print_func},
+    {"FFD",              "\r\n",           urc_print_func},
+    {"END",              "\r\n",           urc_print_func},
+    {"ActEpDesc",        "\r\n",           urc_print_func},
+    {"SimpleDesc",       "\r\n",           urc_print_func},
+    {"EP",               "\r\n",           urc_print_func},
+    {"ProfileID",        "\r\n",           urc_print_func},
+    {"DeviceID",         "\r\n",           urc_print_func},
+    {"InCluster",        "\r\n",           urc_print_func},
+    {"OutCluster",       "\r\n",           urc_print_func},
+    {"----",             "\r\n",           urc_print_func},
+    {"ReadAttr",         "\r\n",           urc_print_func},
+    {"WriteAttr",        "\r\n",           urc_print_func},
+    {"ERROR",            "\r\n",           urc_print_func},
 };
 
 static int mg21_init(struct at_device *device)
